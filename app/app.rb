@@ -1,4 +1,5 @@
 class Bdu < Padrino::Application
+  register Padrino::Contrib::ExceptionNotifier
   register ScssInitializer
   use ActiveRecord::ConnectionAdapters::ConnectionManagement
   register Padrino::Rendering

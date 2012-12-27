@@ -41,5 +41,6 @@ end
 #
 Padrino.after_load do
 end
+require 'padrino-contrib/exception_notifier'
 
 Padrino.load!
