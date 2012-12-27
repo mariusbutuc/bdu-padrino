@@ -1,8 +1,7 @@
 source :rubygems
 
 # Server requirements
-gem 'thin' # or mongrel
-# gem 'trinidad', :platform => 'jruby'
+gem 'thin'
 
 # Project requirements
 gem 'rake'
@@ -14,18 +13,16 @@ gem 'haml'
 gem 'activerecord', :require => "active_record"
 gem 'pg'
 
-# Test requirements
-gem 'mocha', :group => "test"
-gem 'rspec', :group => "test"
-gem 'rack-test', :require => "rack/test", :group => "test"
-
 # Padrino Stable Gem
 gem 'padrino', '0.10.7'
 
-# Or Padrino Edge
-# gem 'padrino', :git => 'git://github.com/padrino/padrino-framework.git'
+# Test requirements
+group :test do
+  gem 'mocha'
+  gem 'rspec'
+  gem 'rack-test', :require => "rack/test"
+end
 
-# Or Individual Gems
-# %w(core gen helpers cache mailer admin).each do |g|
-#   gem 'padrino-' + g, '0.10.7'
-# end
+group :development do
+  gem 'tux'
+end
