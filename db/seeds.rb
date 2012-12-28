@@ -1,31 +1,13 @@
-# Seed add you the ability to populate your db.
-# We provide you a basic shell for interaction with the end user.
-# So try some code like below:
-#
-#   name = shell.ask("What's your name?")
-#   shell.say name
-#
-email     = shell.ask "Which email do you want use for logging into admin?"
-password  = shell.ask "Tell me the password to use:"
+pwd  = 'P@ssw0rd'
+accounts = [
+  { email: 'admin@bigdatauniversity.com', name: 'Admin', surname: 'BDU', password: pwd, password_confirmation: pwd, role: 'admin' }
+]
 
-shell.say ""
-
-account = Account.find_or_create_by_email(email: email, name: "Foo", surname: "Bar", password: password, password_confirmation: password, role: "admin")
-
-if account.valid?
-  shell.say "================================================================="
-  shell.say "Account has been successfully created, now you can login with:"
-  shell.say "================================================================="
-  shell.say "   email: #{email}"
-  shell.say "   password: #{password}"
-  shell.say "================================================================="
-else
-  shell.say "Sorry but some thing went wrong!"
-  shell.say ""
-  account.errors.full_messages.each { |m| shell.say "   - #{m}" }
+pbar = ProgressBar.create( title: 'Add admin@bigdatauniversity.com', total: accounts.count, format: '%a |%b>>%i| %p%% %t [%c/%C done]' )
+accounts.each do |a|
+  Account.find_or_create_by_email( a )
+  pbar.increment
 end
-
-shell.say ""
 
 
 ##### Add the Testimonials

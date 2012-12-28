@@ -1,4 +1,4 @@
-if ENV['PADRINO_ENV'] = /test|development/
+if ENV['PADRINO_ENV'] =~ /test|development/
   require 'rspec/core/rake_task'
 
   spec_tasks = Dir['spec/*/'].map { |d| File.basename(d) }
