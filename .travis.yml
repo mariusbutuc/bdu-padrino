@@ -1,0 +1,16 @@
+language: ruby
+rvm:
+  - 1.9.3
+env:
+  global:
+    - secure: "NLGMm5v5Zbfis9gTxK1A+aCe96x3SnqeAJV5Esyqvux7UW1yxJ9f/BFwBWoi\neGY0jPcomMs+vGG6ejVVp35goug9kMntaILI3TBCOn0NpUlAC6nJs/cyU6n1\n/4rd8mOxZPukVBmwAErbTaYJU5sesd3pBrXnuSXL2kuVhYMoKVU="
+after_script:
+  - gem install heroku
+  - git remote add heroku git@heroku.com:bdu-on-padrino.git
+  - echo "Host heroku.com" >> ~/.ssh/config
+  - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
+  - echo "   CheckHostIP no" >> ~/.ssh/config
+  - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
+  - heroku keys:clear
+  - yes | heroku keys:add
+  - yes | git push heroku master
