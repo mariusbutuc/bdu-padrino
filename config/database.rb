@@ -1,22 +1,7 @@
-##
-# You can use other adapters like:
-#
-#   ActiveRecord::Base.configurations[:development] = {
-#     :adapter   => 'mysql',
-#     :encoding  => 'utf8',
-#     :reconnect => true,
-#     :database  => 'your_database',
-#     :pool      => 5,
-#     :username  => 'root',
-#     :password  => '',
-#     :host      => 'localhost',
-#     :socket    => '/tmp/mysql.sock'
-#   }
-#
 ActiveRecord::Base.configurations[:development] = {
   :adapter   => 'postgresql',
   :database  => 'bdu_development',
-  :username  => 'root',
+  :username  => 'marius',
   :password  => '',
   :host      => 'localhost',
   :port      => 5432
@@ -26,7 +11,7 @@ ActiveRecord::Base.configurations[:development] = {
 ActiveRecord::Base.configurations[:production] = {
   :adapter   => 'postgresql',
   :database  => 'bdu_production',
-  :username  => 'root',
+  :username  => 'postgres',
   :password  => '',
   :host      => 'localhost',
   :port      => 5432
@@ -36,7 +21,7 @@ ActiveRecord::Base.configurations[:production] = {
 ActiveRecord::Base.configurations[:test] = {
   :adapter   => 'postgresql',
   :database  => 'bdu_test',
-  :username  => 'root',
+  :username  => 'postgres',
   :password  => '',
   :host      => 'localhost',
   :port      => 5432
