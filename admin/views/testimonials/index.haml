@@ -1,0 +1,39 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active=link_to pat(:list), url(:testimonials, :index)
+      %li=link_to pat(:new), url(:testimonials, :new)
+  .content
+    %h2.title
+      =pat(:all)
+      =mt(:testimonials)
+    .inner
+      %table.table
+        %tr
+          %th.first=mat(:testimonial, :id)
+          %th=mat(:testimonial, :author)
+          %th=mat(:testimonial, :content)
+          %th=mat(:testimonial, :country)
+          %th=mat(:testimonial, :email)
+          %th=mat(:testimonial, :active)
+          %th=mat(:testimonial, :created_at)
+          %th=mat(:testimonial, :updated_at)
+          %th.last="&nbsp;"
+        -@testimonials.each do |testimonial|
+          %tr
+            %td.first=testimonial.id
+            %td=testimonial.author
+            %td=testimonial.content
+            %td=testimonial.country
+            %td=testimonial.email
+            %td=testimonial.active
+            %td=testimonial.created_at
+            %td=testimonial.updated_at
+            %td.last
+              =button_to pat(:edit), url(:testimonials, :edit, :id => testimonial.id), :method => :get, :class => :button_to
+              ="|"
+              =button_to pat(:delete), url(:testimonials, :destroy, :id => testimonial.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')"
+      .actions-bar.wat-cf
+        .actions="&nbsp;"
+
+-content_for :sidebar, partial("base/sidebar")

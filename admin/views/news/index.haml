@@ -1,0 +1,41 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active=link_to pat(:list), url(:news, :index)
+      %li=link_to pat(:new), url(:news, :new)
+  .content
+    %h2.title
+      =pat(:all)
+      =mt(:news)
+    .inner
+      %table.table
+        %tr
+          %th.first=mat(:news, :id)
+          %th=mat(:news, :title)
+          %th=mat(:news, :description)
+          %th=mat(:news, :img_url)
+          %th=mat(:news, :url)
+          %th=mat(:news, :active)
+          %th=mat(:news, :position)
+          %th=mat(:news, :created_at)
+          %th=mat(:news, :updated_at)
+          %th.last="&nbsp;"
+        -@news.each do |news|
+          %tr
+            %td.first=news.id
+            %td=news.title
+            %td=news.description
+            %td=news.img_url
+            %td=news.url
+            %td=news.active
+            %td=news.position
+            %td=news.created_at
+            %td=news.updated_at
+            %td.last
+              =button_to pat(:edit), url(:news, :edit, :id => news.id), :method => :get, :class => :button_to
+              ="|"
+              =button_to pat(:delete), url(:news, :destroy, :id => news.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')"
+      .actions-bar.wat-cf
+        .actions="&nbsp;"
+
+-content_for :sidebar, partial("base/sidebar")
