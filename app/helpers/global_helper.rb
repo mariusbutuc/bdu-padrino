@@ -6,6 +6,6 @@ Bdu.helpers do
     users_count = HTTParty.get(registered_users_url).body
     # Update in the DB
     # refresh in the view
-    users_count
+    users_count.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse
   end
 end
