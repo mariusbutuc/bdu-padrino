@@ -1,4 +1,4 @@
-postgres = URI.parse(ENV['DATABASE_URL'] || '')
+db = URI.parse(ENV['DATABASE_URL'] || '')
 
 ActiveRecord::Base.configurations[:development] = {
   :adapter   => 'postgresql',
@@ -11,13 +11,13 @@ ActiveRecord::Base.configurations[:development] = {
 }
 
 ActiveRecord::Base.configurations[:production] = {
-  :adapter  => 'postgresql',
-  :encoding => 'utf8',
-  :database => postgres.path[1..-1],
-  :username => postgres.user,
-  :password => postgres.password,
-  :host     => postgres.host
-
+  :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+  :host     => db.host,
+  :port     => db.port,
+  :username => db.user,
+  :password => db.password,
+  :database => db.path[1..-1],
+  :encoding => 'utf8'
 
 }
 
