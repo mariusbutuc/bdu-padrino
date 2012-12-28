@@ -1,0 +1,32 @@
+!!! 5
+%html
+  %head
+    %meta{ charset: 'utf-8' }
+
+    %title= [@title, 'Big Data University'].compact.join(' | ')
+    %meta{ name: 'description', content: 'Learn Big Data technologies like Hadoop, HDFS, Hive, HBase, MapReduce, JAQL, Pig, Flume, ZooKeeper, Mahout, Streams, and others. Big Data University offers free online courses taught by the leading experts in the field. Complete these free courses on your schedule. Use free course materials, videos and books.' }
+    %meta{ name: 'keywords', content: 'Hadoop, HDFS, JAQL, Pig, Flume, Hive, BigData, Big Data, Course, Free, MapReduce, ZooKeeper, Streams, Event Processing, Online Courses, Books, Apache, Linux' }
+    %meta{ name: 'author', content: 'Big Data University' }
+    :plain
+      <!--[if lt IE 9]>
+        <script src='/js/html5shiv.js'></script>
+      <![endif]-->
+    - if Sinatra::Base.production?
+      = stylesheet_link_tag '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.2/css/bootstrap.min.css', '/css/responsive-fix.css', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.2/css/bootstrap-responsive.min.css', '/css/styles.css'
+    - else
+      = stylesheet_link_tag '/css/bootstrap.css', '/css/responsive-fix.css', '/css/bootstrap-responsive.css', '/css/styles.css'
+    = favicon_tag '/favicon.ico'
+
+  %body
+
+    = partial 'layouts/navbar'
+
+    = yield
+
+    = partial 'layouts/footer'
+
+    / Placed at the end of the document so the pages load faster
+    - if Sinatra::Base.production?
+      = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js', '/js/jquery-ujs.js', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.2/bootstrap.min.js', '/js/application.js'
+    - else
+      = javascript_include_tag '/js/jquery.js', '/js/jquery-ujs.js', '/js/bootstrap.js', '/js/application.js'

@@ -1,0 +1,20 @@
+%footer{ role: 'contentinfo' }
+  .navbar.navbar-inverse.navbar-fixed-bottom
+    .navbar-inner
+      .container
+        %ul.nav
+          - pages = [ 'faq', 'contact', 'about us', 'legal', 'bug reports' ]
+          - pages.each do |page|
+            - case page
+            - when 'faq'
+              %li
+                %a{ href: "/#{page}" }= page.upcase
+            - when 'about us'
+              %li
+                %a{ href: "/about" }= page.capitalize
+            - when 'bug reports'
+              %li
+                %a{ href: "/bugs" }= page.capitalize
+            - else
+              %li
+                %a{ href: "/#{page}" }= page.capitalize

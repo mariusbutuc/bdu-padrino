@@ -1,0 +1,79 @@
+%header.jumbotron
+  .container
+    %h1 Learn From the Industry's Best
+    %p.lead= "Join #{@registered_users} registered students and put your career on the right track"
+.sub-jumbotron
+  = partial 'layouts/search'
+  = partial 'layouts/carousel'
+
+%section.container{ role: 'main' }
+  .row
+    .span4
+      %header
+        %h2
+          Who We Are
+      %p
+        A bunch of new and experienced <strong>Hadoop</strong>,
+        <strong>Big&nbsp;Data</strong> and <strong>information&nbsp;management</strong>
+        enthusiasts who want to <em>learn</em>, <em>contribute</em>, and <em>network</em>
+        with others with similar interests. Our community includes open source enthusiasts, the academia, professionals, and
+        companies including IBM, Amazon, and Jaspersoft.
+      %p
+        %a.btn{ href: '/'} Learn more &raquo;
+    .span4
+      %header
+        %h2
+          Our Mission
+      %p
+        Make <strong>Big&nbsp;Data education</strong> available to anyone, and start a
+        journey of discovery that can change the world! Big&nbsp;data technologies such
+        as <strong>Hadoop</strong> and <strong>InfoSphere&nbsp;Streams</strong> paired
+        with <strong>Cloud&nbsp;Computing</strong> can let even high school students
+        explore data that can lead to important discoveries in the health industry, the environment, and any other area you can think of!
+      %p
+        %a.btn{ href: '/'} Big Data use cases &raquo;
+    .span4
+      %header
+        %h2
+          Our Courses
+      %p
+        Make you learn quickly with videos and hands-on exercises that can be
+        run on the Cloud. They are <strong>free</strong>, developed by
+        <strong>experienced</strong> professionals and <strong>teachers</strong>,
+        and nicely structured. Pass the course test to print your certificate
+        immediately!
+      %p
+        %a.btn{ href: '/courses' } Course catalog &raquo;
+
+  %hr
+
+  .row
+    .span4
+      %header
+        %h3
+          What is Hadoop?
+      %ul.thumbnails
+        %li.span4
+          .thumbnail.pagination-centered
+            - # The trigger for the modal
+            %a{ href: 'hadoop-and-big-data-video', role: 'button', data: { toggle: 'modal', target: '#Hadoop-and-Big-Data' } }
+              %img{ src: 'img/what-is-hadoop.png', width: '360', height: '260', alt: 'Akmal Chaudhri on Hadoop and Big Data', data: { src: 'img/what-is-hadoop.png' } }
+            %p
+              %small Akmal&nbsp;Chaudhri on Hadoop and Big&nbsp;Data
+            %p
+              %a.btn.btn-large.btn-success{ href: '/signup' }
+                Sign up
+      - # The modal that will pop up
+      #Hadoop-and-Big-Data.modal.hide.fade{ tabindex: '-1', role: 'dialog', 'aria-hidden' => 'true', 'aria-labelledby' => 'Marius' }
+
+    .span8
+      %header
+        %h3
+          According to big data users&hellip;
+      %ul.unstyled
+        - @testimonials.each do |t|
+          %li
+            %blockquote
+              %p= t.content
+              %small
+                %cite= t.author

@@ -1,0 +1,191 @@
+/* Jumbotrons
+-------------------------------------------------- */
+
+/* Base class
+
+ * gradient:  #bootstrap  #kim
+ * dark:      #020031     #101503
+ * light:     #6D3353     #7B9E19
+------------------------- */
+.jumbotron {
+  position: relative;
+  padding: 20px 0;
+  color: #fff;
+  text-align: left;
+  text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
+  background: #101503; /* Old browsers */
+  background: -moz-linear-gradient(45deg,  #101503 0%, #6e8d17 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#101503), color-stop(100%,#6e8d17)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(45deg,  #101503 0%,#6e8d17 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(45deg,  #101503 0%,#6e8d17 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(45deg,  #101503 0%,#6e8d17 100%); /* IE10+ */
+  background: linear-gradient(45deg,  #101503 0%,#6e8d17 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#101503', endColorstr='#6e8d17',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+     -moz-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+          box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+  border-bottom: 1px solid #ddd;
+}
+.jumbotron h1 {
+  font-size: 54px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+.jumbotron p {
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+
+/* Link styles (used on .masthead-links as well) */
+.jumbotron a {
+  color: #fff;
+  color: rgba(255,255,255,.5);
+  -webkit-transition: all .2s ease-in-out;
+     -moz-transition: all .2s ease-in-out;
+          transition: all .2s ease-in-out;
+}
+.jumbotron a:hover {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255,255,255,.25);
+}
+
+
+/* Pattern overlay
+------------------------- */
+.jumbotron .container {
+  position: relative;
+  z-index: 2;
+}
+.jumbotron:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url(/img/matrix-pattern.png) repeat center center;
+  opacity: .17;
+}
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1) {
+
+  .jumbotron:after {
+    background-size: 150px 150px;
+  }
+
+}
+
+
+
+/* Responsive
+-------------------------------------------------- */
+
+/* Desktop large
+------------------------- */
+@media (min-width: 1200px) {
+
+}
+
+/* Desktop
+------------------------- */
+@media (max-width: 980px) {
+
+}
+
+/* Tablet to desktop
+------------------------- */
+@media (min-width: 768px) and (max-width: 979px) {
+  /* Remove any padding from the body */
+  body {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  /* Widen masthead and social buttons to fill body padding */
+  .jumbotron {
+    margin-top: -20px; /* Offset bottom margin on .navbar */
+  }
+}
+
+/* Tablet
+------------------------- */
+@media (max-width: 767px) {
+  /* Remove any padding from the body */
+  body {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  /* Widen masthead and social buttons to fill body padding */
+  .jumbotron {
+    padding: 20px 20px;
+    margin-top:   -20px; /* Offset bottom margin on .navbar */
+    margin-right: -20px;
+    margin-left:  -20px;
+  }
+
+  /* Downsize the jumbotrons */
+  .jumbotron h1 {
+    font-size: 45px;
+  }
+  .jumbotron p,
+  .jumbotron .btn {
+    font-size: 18px;
+  }
+  .jumbotron .btn {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+/* Landscape phones
+------------------------- */
+@media (max-width: 480px) {
+
+}
+
+/* Marius hacks
+-------------------------------------------------- */
+
+h2, h3 {
+  color: #7B9E19;
+}
+
+.row-fluid .thumbnails > li {
+  margin-left: 0;
+}
+
+.navbar .brand {
+  padding: 7px 20px 10px;
+}
+
+.form-search {
+  margin: 10px 0;
+}
+
+footer .navbar .nav {
+  float: none;
+  width: 400px;
+  margin: 0 auto;s
+}
+
+.sub-jumbotron {
+  background: #F4F5E9;
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+.navbar .nav > li.omega > a {
+  padding-right: 0;
+}
+
+section[role="main"] hr {
+  border-top: 1px solid #DDD;
+  margin: 30px 0 10px;
+}

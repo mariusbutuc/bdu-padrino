@@ -1,0 +1,12 @@
+.container
+  #bdu-news.carousel.slide
+    .carousel-inner
+      - @news.each do |slide|
+        .item{ class: slide == @news.first ? 'active' : nil }
+          %a{ href: slide.url }
+            %img{ src: slide.img_url , width: 1200, height: 480 }
+            .carousel-caption
+              %h4= slide.title
+              %p= slide.description
+    %a.left.carousel-control{ href: '#bdu-news', data: { slide: 'prev' } } &lsaquo;
+    %a.right.carousel-control{ href: '#bdu-news', data: { slide: 'next' } } &rsaquo;
