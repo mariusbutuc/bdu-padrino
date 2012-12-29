@@ -1,6 +1,6 @@
 .container
-  %form.form-search.pull-right{ role: 'search' }
+  %form.form-search.pull-right{ role: 'search', action: 'http://bigdatauniversity.com/courses/course/search.php' }
     .input-append
-      %input.search-query.input-medium#appendedInput{ name: 'q', type: 'search', placeholder: 'Search courses...' }
+      %input.search-query.input-medium#appendedInput{ name: 'search', type: 'search', placeholder: 'Search courses...' }
       %button.btn.btn-inverse{ type: 'submit' }
         %i.icon-search.icon-white
