@@ -1,5 +1,5 @@
 class CreateTestimonials < ActiveRecord::Migration
-  def self.up
+  def change
     create_table :testimonials do |t|
       t.string    :author
       t.text      :content
@@ -8,9 +8,5 @@ class CreateTestimonials < ActiveRecord::Migration
       t.boolean   :active,  default: false
       t.timestamps
     end
-  end
-
-  def self.down
-    drop_table :testimonials
   end
 end

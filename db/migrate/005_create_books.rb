@@ -1,14 +1,9 @@
 class CreateBooks < ActiveRecord::Migration
-  def self.up
+  def change
     create_table :books do |t|
       t.string :cover_url
       t.string :authors
-
       t.timestamps
     end
-  end
-
-  def self.down
-    drop_table :books
   end
 end
