@@ -15,8 +15,8 @@ class Bdu < Padrino::Application
     @registered_users = get_registered_users
     # @registered_users = '57579'
 
-    @news = News.where(active: true)
-    @testimonials = Testimonial.where(active: true).sample(3)
+    @news = News.active
+    @testimonials = Testimonial.active.sample(3)
 
     render 'index'
   end
