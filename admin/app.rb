@@ -33,6 +33,8 @@ class Admin < Padrino::Application
   end
 
   access_control.roles_for :admin do |role|
+    role.project_module :books, '/books'
+    role.project_module :downloads, '/downloads'
     role.project_module :testimonials, '/testimonials'
     role.project_module :news, '/news'
     role.project_module :accounts, '/accounts'

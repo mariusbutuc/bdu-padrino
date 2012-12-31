@@ -1,0 +1,41 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active=link_to pat(:list), url(:downloads, :index)
+      %li=link_to pat(:new), url(:downloads, :new)
+  .content
+    %h2.title
+      =pat(:all)
+      =mt(:downloads)
+    .inner
+      %table.table
+        %tr
+          %th.first=mat(:download, :id)
+          %th=mat(:download, :title)
+          %th=mat(:download, :url)
+          %th=mat(:download, :description)
+          %th=mat(:download, :icon_url)
+          %th=mat(:download, :active)
+          %th=mat(:download, :position)
+          %th=mat(:download, :created_at)
+          %th=mat(:download, :updated_at)
+          %th.last="&nbsp;"
+        -@downloads.each do |download|
+          %tr
+            %td.first=download.id
+            %td=download.title
+            %td=download.url
+            %td=download.description
+            %td=download.icon_url
+            %td=download.active
+            %td=download.position
+            %td=download.created_at
+            %td=download.updated_at
+            %td.last
+              =button_to pat(:edit), url(:downloads, :edit, :id => download.id), :method => :get, :class => :button_to
+              ="|"
+              =button_to pat(:delete), url(:downloads, :destroy, :id => download.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')"
+      .actions-bar.wat-cf
+        .actions="&nbsp;"
+
+-content_for :sidebar, partial("base/sidebar")
