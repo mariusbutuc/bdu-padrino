@@ -305,7 +305,20 @@ news = [
 ]
 
 pbar = ProgressBar.create( title: 'Seed news', total: news.count, format: '%a |%b>>%i| %p%% %t [%c/%C done]' )
-news.each do |n|
-  News.find_or_create_by_title( n )
+news.each_with_index do |n, index|
+  News.find_or_create_by_title( n.merge({ position: index }) )
+  pbar.increment
+end
+
+downloads = [
+  { title: 'BigInsights Basic Edition', url: 'https://www14.software.ibm.com/webapp/iwm/web/preLogin.do?source=swg-ibmibee&S_CMP=BigI_BDUDWLDTAB', description: 'BigInsights Basic Edition is the free version of BigInsights which includes Hadoop and other additional resources.' },
+  { title: 'Streams', url: 'https://www14.software.ibm.com/webapp/iwm/web/preLogin.do?source=SWG-STREAMS_TRIAL&S_CMP=Streams_BDUDWLDTAB', description: 'Streams is a highly scalable analytics platform that allows applications to rapidly analyze, and correlate information as it arrives from thousands of real-time sources at very high data throughput rates.' },
+  { title: 'DB2 Express-C', url: 'http://db2express.com/download?S_TACT=DB2UDWLDTAB', description: 'Download the free version of IBM DB2 Data Servers. <br />DB2 Express-C is free to develop, deploy, and distribute!' },
+  { title: 'Data Studio', url: 'https://www14.software.ibm.com/webapp/iwm/web/preLogin.do?lang=en_US&source=swg-idssa&S_TACT=DB2UDWLD', description: 'Data Studio is a free Eclipse tool for administration and development.' }
+]
+
+pbar = ProgressBar.create( title: 'Seed downloads', total: downloads.count, format: '%a |%b>>%i| %p%% %t [%c/%C done]' )
+downloads.each_with_index do |d, index|
+  Download.find_or_create_by_title( d.merge({ active: true, position: index}) )
   pbar.increment
 end
