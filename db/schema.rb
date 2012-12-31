@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 6) do
+ActiveRecord::Schema.define(:version => 5) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -24,16 +24,11 @@ ActiveRecord::Schema.define(:version => 6) do
   end
 
   create_table "books", :force => true do |t|
-    t.string   "cover_url"
-    t.string   "authors"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "downloadable_resources", :force => true do |t|
     t.string   "title"
     t.string   "url"
     t.text     "description"
+    t.string   "cover_url"
+    t.string   "authors"
     t.boolean  "active",      :default => false
     t.integer  "position"
     t.datetime "created_at",                     :null => false
@@ -41,9 +36,14 @@ ActiveRecord::Schema.define(:version => 6) do
   end
 
   create_table "downloads", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.text     "description"
     t.string   "icon_url"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "active",      :default => false
+    t.integer  "position"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "news", :force => true do |t|

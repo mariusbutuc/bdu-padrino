@@ -1,9 +1,10 @@
-class CreateDownloadableResources < ActiveRecord::Migration
+class CreateDownloads < ActiveRecord::Migration
   def change
-    create_table :downloadable_resources do |t|
+    create_table :downloads do |t|
       t.string    :title
       t.string    :url
       t.text      :description
+      t.string    :icon_url
       t.boolean   :active,      default: false
       t.integer   :position
       t.timestamps
