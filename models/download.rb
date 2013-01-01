@@ -17,4 +17,10 @@ class Download < ActiveRecord::Base
   attr_accessible :title, :url, :description, :active, :position, :logo
   validates :title, :url, presence: true
   scope :active, where(active: true).order(:position)
+
+  # Turn the title into an ID/slug
+  # http://stackoverflow.com/a/3405699/341929
+  def slug
+    self.title.downcase.gsub(/\s+/, '-').gsub(/[^a-z0-9_-]/, '').squeeze('-')
+  end
 end
