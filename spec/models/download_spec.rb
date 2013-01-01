@@ -6,7 +6,7 @@
 #  title       :string(255)
 #  url         :string(255)
 #  description :text
-#  icon_url    :string(255)
+#  logo        :string(255)
 #  active      :boolean          default(FALSE)
 #  position    :integer
 #  created_at  :datetime         not null

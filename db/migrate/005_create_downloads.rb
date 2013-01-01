@@ -4,7 +4,7 @@ class CreateDownloads < ActiveRecord::Migration
       t.string    :title
       t.string    :url
       t.text      :description
-      t.string    :icon_url
+      t.string    :logo
       t.boolean   :active,      default: false
       t.integer   :position
       t.timestamps

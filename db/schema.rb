@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 5) do
     t.string   "title"
     t.string   "url"
     t.text     "description"
-    t.string   "icon_url"
+    t.string   "logo"
     t.boolean  "active",      :default => false
     t.integer  "position"
     t.datetime "created_at",                     :null => false
