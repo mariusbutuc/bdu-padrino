@@ -1,0 +1,28 @@
+%header.jumbotron
+  .container
+    %h1= @title
+    %p.lead= 'Get the software you need to successfully complete the courses'
+.sub-jumbotron
+  = partial 'layouts/search'
+
+%section.container{ role: 'main' }
+  .row
+    .span9
+      %ul.media-list
+        - @downloads.each do |d|
+          %li.media
+            %a.pull-left{ href: d.url }
+              %img.media-object{ src: d.logo.to_s[0] ? d.logo : '/img/default-download.png', height: '64', width: '64' }
+            .media-body
+              %h3.media-heading{ id: d.slug }
+                %a{ href: d.url }
+                  = d.title
+              = d.description
+
+    %aside.span3
+      %ul.nav.nav-tabs.nav-stacked.affix
+        - @downloads.each do |d|
+          %li{ class: d == @downloads.first ? 'active': '' }
+            %a{ href: "##{d.slug}" }
+              %i.icon-chevron-left
+              = d.title

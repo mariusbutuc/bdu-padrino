@@ -17,7 +17,7 @@
       = stylesheet_link_tag '/css/bootstrap.css', '/css/responsive-fix.css', '/css/bootstrap-responsive.css', '/css/styles.css'
     = favicon_tag '/favicon.ico'
 
-  %body
+  %body{ data: { spy: 'scroll' } }
 
     = partial 'layouts/navbar'
 

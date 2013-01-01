@@ -153,7 +153,7 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
 /* Marius hacks
 -------------------------------------------------- */
 
-h2, h3 {
+h2, h3, h2 a, h3 a {
   color: #7B9E19;
 }
 
@@ -163,6 +163,10 @@ h2, h3 {
 
 .navbar .brand {
   padding: 7px 20px 10px;
+}
+
+.navbar .nav > li.omega > a {
+  padding-right: 0;
 }
 
 .form-search {
@@ -177,15 +181,18 @@ footer .navbar .nav {
 
 .sub-jumbotron {
   background: #F4F5E9;
-  padding-bottom: 20px;
   margin-bottom: 10px;
-}
-
-.navbar .nav > li.omega > a {
-  padding-right: 0;
 }
 
 section[role="main"] hr {
   border-top: 1px solid #DDD;
   margin: 30px 0 10px;
+}
+
+.carousel {
+  margin-bottom: 40px;
+}
+
+.media, .media .media {
+  margin-top: 45px;
 }
