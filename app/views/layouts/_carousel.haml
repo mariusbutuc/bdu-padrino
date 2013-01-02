@@ -3,7 +3,7 @@
     .carousel-inner
       - @news.each do |slide|
         .item{ class: slide == @news.first ? 'active' : nil }
-          %a{ href: slide.url }
+          %a.outbound{ href: slide.url }
             %img{ src: slide.img_url , width: 1200, height: 480 }
             .carousel-caption
               %h4= slide.title

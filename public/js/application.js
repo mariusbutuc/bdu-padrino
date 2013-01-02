@@ -14,4 +14,10 @@ $(document).ready(function() {
   $('.modal').on('hide', function () {
     $(this).empty();
   });
+
+  // Open outbound links in new window
+  $('.outbound').click( function() {
+    window.open(this.href);
+    return false;
+  });
 });
