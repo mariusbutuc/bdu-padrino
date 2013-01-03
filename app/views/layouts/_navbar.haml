@@ -14,10 +14,10 @@
             %a{ href: "/#{tab}" }= tab.capitalize
       .nav-collapse
         %ul.nav
-          - %w[ courses acm-icpc downloads resources ].each do |tab|
+          - %w[ courses acm-icpc resources downloads ].each do |tab|
             - case tab
             - when "acm-icpc"
-              %li.disabled
+              %li.disabled{ style: 'display: none;' }
                 %a{ href: "/#{tab}" }= tab.upcase
             - else
               %li
