@@ -201,6 +201,10 @@ section[role="main"] hr {
   margin-top: 45px;
 }
 
+.media .thumbnail {
+  margin-top: 10px;
+}
+
 .affix li {
   margin-left: 0;
 }
