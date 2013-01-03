@@ -11,7 +11,7 @@
       %ul.media-list
         - @downloads.each do |d|
           %li.media
-            %a.outbound.pull-left{ href: d.url }
+            %a.outbound.thumbnail.pull-left{ href: d.url }
               %img.media-object{ src: d.logo.to_s[0] ? d.logo : '/img/default-download.png', height: '64', width: '64' }
             .media-body
               %h3.media-heading{ id: d.slug }

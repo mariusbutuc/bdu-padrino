@@ -322,3 +322,119 @@ downloads.each_with_index do |d, index|
   Download.find_or_create_by_title( d.merge({ active: true, position: index}) )
   pbar.increment
 end
+
+
+#### Add the books in the Learning Resources
+
+books = [
+  { title: 'Harness the Power of Big&nbsp;Data',
+    cover_url: '/img/book-power-of-bigdata.png',
+    url: 'https://www.ibm.com/developerworks/wikis/display/db2oncampus/FREE+ebook+-+Understanding+Big+Data',
+    description: '<strong>Analytics for Enterprise Class Hadoop and Streaming Data</strong> The three defining characteristics of Big Data&mdash;volume, variety, and velocity&mdash;are discussed. You\'ll get a primer on Hadoop and how IBM is \'hardening\' it for the enterprise, and learn when to leverage IBM InfoSphere BigInsights (Big Data at rest) and IBM InfoSphere Streams (Big&nbsp;Data in motion) technologies. Deployment and scaling strategies plus industry use cases are also included in this practical guide.',
+    authors: 'Chris Eaton, Dirk DeRoos, Tom Deutsch, George Lapis &amp; Paul Zikopoulos',
+    position: 0 },
+
+  { title: 'Hadoop for Dummies',
+    cover_url: '/img/book-hadoop-for-dummies.png',
+    url: 'http://info.platform.com/EA.CY12Q4.Hadoop.for.Dummies.10.09.12_Registration.html',
+    description: '<strong>Discover Effective Data Solutions for Your Organization</strong> In the age of "big data," it\'s essential for any organization to know how to analyze and manage their ever increasing stores of information.<br /> Packed with everything you need to know about <em>Hadoop analytics</em>, this handy guide provides you with a solid understanding of the critical big data concepts and trends, and suggests ways for you to revolutionize your business operations through the implementation of cost-effective, high performance <em>Hadoop technology</em>.',
+    authors: 'Robert D. Schneider',
+    position: 1 },
+
+  { title: 'IBM InfoSphere Streams',
+    cover_url: '/img/book-is-streams.png',
+    url: 'http://www.redbooks.ibm.com/abstracts/sg247970.html?Open',
+    description: '<strong>Assembling Continuous Insight in the Information Revolution</strong> This publication discusses and describes the positioning, functions, capabilities, and advanced programming techniques for IBM InfoSphere&trade; Streams, a new paradigm and key component of IBM Big Data platform.<br /> This book is intended for professionals that require an understanding of how to process high volumes of streaming data or need information about how to implement systems to satisfy those requirements.',
+    authors: 'Chuck Ballard, Kevin Foster, Andy Frenkiel, Bugra Gedik, Michael P. Koranda, Senthil Nathan, Deepak Rajan, Roger Rea, Mike Spicer, Brian Williams &amp; Vitali N. Zoubov',
+    position: 2 },
+
+  { title: 'Database Fundamentals',
+    cover_url: '/img/book-db-fundamentals.png',
+    url: 'https://www.ibm.com/developerworks/wikis/display/db2oncampus/FREE+ebook+-+Database+fundamentals',
+    description: 'Learn the basics of relational database theory and other information models. This book discusses database logical and physical design, and introduces you to the SQL language. Practice with hands-on exercises!',
+    authors: 'Neeraj Sharma, Liviu Perniu, Raul F. Chong, Abhishek Iyer, Adi-Cristina Mitea, Chaitali Nandan, Mallarswami Nonvinkere &amp; Mirela Danubianu',
+    position: 3 },
+
+  { title: 'Getting started with DB2&nbsp;Express-C',
+    cover_url: '/img/book-db2-express-c.png',
+    url: 'https://www.ibm.com/developerworks/wikis/display/DB2/FREE+Book-+Getting+Started+with+DB2+Express-C',
+    description: 'This is the 3<sup>rd</sup> edition of this popular DB2 book. Learn what DB2 is all about. It\'s been updated for DB2 9.7 and has been translated to many languages.',
+    authors: 'Raul F. Chong, Ian Hakes &amp; Rav Ahuja',
+    position: 4 },
+
+  { title: 'Getting started with InfoSphere Data&nbsp;Architect',
+    cover_url: '/img/book-is-data-architect.png',
+    url: 'https://www.ibm.com/developerworks/wikis/display/db2oncampus/FREE+ebook+-+Getting+started+with+InfoSphere+Data+Architect',
+    description: 'InfoSphere Data Architect (IDA) is the premier tool from IBM for database design and more. Learn how to use it in conjunction with DB2 Express-C, the no-charge edition of DB2. Since <abbr title="InfoSphere Data Architect">IDA</abbr> is built on top of Eclipse, you can integrate it easily with other tools from IBM such as Data Studio also built using Eclipse technology. <br /> This book is for beginners in <abbr title="InfoSphere Data Architect">IDA</abbr> and also in <em>data modeling</em>.',
+    authors: 'Erin Wilson, Sagar Vibhute, Chetan Bhatia, Rahul Jain, Liviu Perniu, Shilpa Raveendramurthy, &amp; Robert Samuel',
+    position: 5 },
+
+  { title: 'Getting started with DB2 application development',
+    cover_url: '/img/book-db2-app-dev.png',
+    url: 'https://www.ibm.com/developerworks/wikis/display/db2oncampus/FREE+ebook+-+Getting+started+with+DB2+application+development',
+    description: 'This book introduces you to DB2&reg; application development using DB2 Express-C. Learn about DB2 stored procedures, functions and Data Web services using SQL and XQuery. Learn how to work with DB2 and JavaTM, C/C++, .NET, PHP, Ruby on Rails, Perl, and more!',
+    authors: 'Raul F. Chong, Xiqiang Ji, Priyanka Joshi, Vineet Mishra &amp; Min Wei Yao',
+    position: 6 },
+
+  { title: 'Getting started with IBM Data&nbsp;Studio for DB2',
+    cover_url: '/img/book-data-studio-db2.png',
+    url: 'https://www.ibm.com/developerworks/wikis/display/db2oncampus/FREE+ebook+-+Getting+started+with+IBM+Data+Studio+for+DB2',
+    description: 'IBM Data Studio is an Eclipse-based tool that is the replacement of the DB2&reg; Control Center and other tools for DB2. In conjunction with DB2 Express-C, the no-charge edition of DB2, Data Studio is ideal for DBAs, developers, students, ISVs, or consultants because it\'s easy and free to use. You can extend Data Studio with additional robust management and development capabilities from IBM to help accelerate solution delivery, optimize performance, protect data privacy, manage data growth, and more.',
+    authors: 'Debra Eaton, Vitor  Rodrigues, Manoj K. Sardana, Michael Schenker, Kathryn&nbsp;Zeidenstein &amp; Raul&nbsp;F.&nbsp;Chong',
+    position: 7 },
+
+  { title: 'Getting started with Open&nbsp;Source development',
+    cover_url: '/img/book-os-dev.png',
+    url: 'https://www.ibm.com/developerworks/wikis/display/db2oncampus/FREE+ebook+-+Getting+started+with+open+source+development',
+    description: 'Open source software development is a community-driven methodology to develop products, from the design and development stages to distribution. Developers across differents part of the world are passionate about their collaboration, and several successful projects including Firefox, Moodle, and Drupal are widely used today. Moreover, many companies are using open source software as the foundation to build their business models. <br /> This book gets you started into the fascinating world of open source software development. Using the exercises and case studies provided, you will get good hands-on experience to contribute to and start open source projects.',
+    authors: 'Rachna Kapur, Mario Briggs,  Pedro Carvalho, Ulisses Costa, Tapas Saha, Raul&nbsp;F.&nbsp;Chong &amp; Peter&nbsp;Kohlmann',
+    position: 8 },
+
+  { title: 'DB2 pureScale',
+    cover_url: '/img/book-db2-purescale.png',
+    url: 'http://public.dhe.ibm.com/common/ssi/ecm/en/imm14079usen/IMM14079USEN.PDF',
+    description: '<strong>Risk Free Agile Scaling</strong> DB2 is a leading-edge hybrid data server that offers optimum storage, scalability, and availability. DB2 pureScale is a new technology primarily optimized for scale-out transactional processing clusters in an active-active manner. This succinct guide will show you how DB2 with pureScale can provide you transparent application scalability, the ability to deliver agile-like computing to your transaction systems, and extreme availability.',
+    authors: 'Paul Zikopoulos, Matt Huras, Aamer Sachedina &amp; Paul Awad',
+    position: 9 },
+
+  { title: 'DB2 10 for z/OS',
+    cover_url: '/img/book-db2-10-zos.png',
+    url: 'https://www14.software.ibm.com/webapp/iwm/web/signup.do?source=swg-db210forzos',
+    description: '<strong>Cost Savings... Right Out of the Box</strong> Providing expert knowledge about the features in the new release of DB2 for z/OS, this extensive guide details the innovations of DB2 10\'s SQL and pureXML enhancements-which increase productivity, enhance performance, and simplify application ports. DB2 for z/OS continues to be the undisputed leader in total system availability, scalability, security, and reliability at the lowest cost per transaction. This resource focuses on the features and functions of DB2 10 for IT, including improving operational efficiencies and reducing costs, as well as covering innovations in resiliency for business-critical information, rapid application and warehouse deployment for business growth, and enhanced business analytics and mathematical functions with QMF.',
+    authors: 'Roger Miller, David Beulke, Julian Stuhler &amp; Surekha Pureka',
+    position: 10 },
+
+  { title: 'The IBM Data Governance Unified Process',
+    cover_url: '/img/book-data-governance.png',
+    url: 'http://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=PM&subtype=BK&appname=SWGE_IM_IM_USEN&htmlfid=IMM14074USEN&attachment=IMM14074USEN.PDF',
+    description: '<strong>Driving Business Value with IBM Software and Best Practices</strong> Anyone considering a data governance program within their organization will find an invaluable step-by-step methodology using IBM tools and best practices in this structured how-to. While many in the IT industry hold separate definitions in their minds, this authoritative manual defines data governance as the discipline of treating data as an enterprise asset. The intricate process of data governance involves the exercise of decision rights to optimize, secure, and leverage data. Providing a rigorous explanation of the 14 steps and almost 100 substeps to enact unified data governance, this extensive handbook also shows that the core issues to be tackled are not about technology but rather about people and process.',
+    authors: 'Sunil Soares',
+    position: 11 },
+
+  { title: 'Business Intelligence Strategy',
+    cover_url: '/img/book-bi-strategy.png',
+    url: 'http://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=PM&subtype=BK&appname=SWGE_IM_IM_USEN&htmlfid=IMM14076USEN&attachment=IMM14076USEN.PDF',
+    description: '<strong>A Practical Guide for Achieving BI Excellence</strong> Geared toward IT management and business executives seeking to excel in business intelligence initiatives, this practical guide explores creating business alignment strategies that help prioritize business requirements, build organizational and cultural strategies, increase IT efficiency, and promote user adoption. Business intelligence, together with business analytics and performance management, eliminates information overload by organizing the massive amounts of information available in the modern enterprise. Addressing the challenges of business intelligence operations, this resource supports the goal of better business decision making and identifying unrealized opportunities. Each chapter includes a checklist of recommended approaches and a strategy overview template.',
+    authors: 'John Boyer, Bill Frank, Brian Green, Tracy Harris &amp; Kay Van De Vanter',
+    position: 12 },
+
+  { title: 'IBM Business Analytics and Cloud Computing',
+    cover_url: '/img/book-analytics-cloud.png',
+    url: 'http://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=PM&subtype=BK&appname=SWGE_IM_IM_USEN&htmlfid=IMM14077USEN&attachment=IMM14077USEN.PDF',
+    description: '<strong>Best Practices for Deploying Cognos Business Intelligence to the IBM Cloud</strong> Business intelligence and analytics software enable businesses to analyze performance data in order to make better decisions through the use of cloud computing-an Internet-based model for convenient, on-demand network access to a shared pool of configurable computing resources. This book is a practitioner\'s guide for successful evaluation and design for implementation of Cognos Business Intelligence cloud solution, for either Cognos 8 BI or Cognos Business Intelligence Version 10. With pragmatic and practical information about the best practices and guidelines, as well as specific software and configuration steps, this guide for solutions and IT architects includes detailed screen shots, code samples, and input instructions.',
+    authors: 'Anant Jhingran, Stephan Jou, William Lee, Thanh Pham &amp; Biraj Saha',
+    position: 13 },
+
+  { title: 'Getting started with WAS&nbsp;CE',
+    cover_url: '/img/book-was-ce.png',
+    url: 'https://www.ibm.com/developerworks/wikis/display/db2oncampus/FREE+ebook+-+Getting+started+with+WAS+CE',
+    description: 'WebSphere Application Server Community Edition (<abbr title="WebSphere Application Server Community Edition">WAS CE</abbr>) is part of the IBM WebSphere Application Server family.  Community Edition is the free edition built on top of Apache Geronimo. Learn how to use Community Edition to develop Java EE applications in conjunction with Eclipse and DB2 Express-C, the no-charge edition of DB2.',
+    authors: 'Jiang Lin Quan, Dai Xuan, Wang Lei, Juliano Marcos Martins, Chi Run Hua, Xia&nbsp;Ming, Tang Ying &amp; Raul F. Chong',
+    position: 14 }
+]
+
+pbar = ProgressBar.create( title: 'Seed books', total: books.count, format: '%a |%b>>%i| %p%% %t [%c/%C done]' )
+books.each do |b|
+  Book.find_or_create_by_title( b.merge({ active: true }) )
+  pbar.increment
+end
