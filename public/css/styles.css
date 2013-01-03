@@ -209,11 +209,12 @@ section[role="main"] hr {
   margin-left: 0;
 }
 
-.affix a {
-  color: #7B9E19;
+.affix a, .affix-top a {
+  color: #555;
 }
 
-.affix .active a, .affix .active a:hover {
+.affix .active a, .affix .active a:hover,
+.affix-top .active a, .affix-top .active a:hover {
   color: #FFF;
-  background-color: #A0CD21;
+  background-color: #7B9E19;
 }
