@@ -10,16 +10,15 @@
     .span8
       %ul.media-list
         - @books.each do |book|
-          %li.media
+          %li.media{ id: book.slug }
             %a.outbound.thumbnail.pull-left{ href: book.url }
-              %img.media-object{ src: book.cover_url.to_s[0] ? book.cover_url : '/img/default-book.png' }
+              %img.media-object{ src: book.cover_url.to_s[0] ? book.cover_url : '/img/default-book.png', width: '120' }
             .media-body
-              %h3.media-heading{ id: book.slug }
+              %h3.media-heading
                 %a.outbound{ href: book.url }
                   = book.title
               %p= book.description
               %p= "<strong>Authors:</strong> #{book.authors}"
-
 
     %aside.span4
       %ul.nav.nav-tabs.nav-stacked.affix

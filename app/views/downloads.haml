@@ -10,11 +10,11 @@
     .span8
       %ul.media-list
         - @downloads.each do |d|
-          %li.media
+          %li.media{ id: d.slug }
             %a.outbound.thumbnail.pull-left{ href: d.url }
               %img.media-object{ src: d.logo.to_s[0] ? d.logo : '/img/default-download.png', height: '64', width: '64' }
             .media-body
-              %h3.media-heading{ id: d.slug }
+              %h3.media-heading
                 %a.outbound{ href: d.url }
                   = d.title
               = d.description

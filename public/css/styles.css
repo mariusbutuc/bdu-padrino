@@ -197,8 +197,8 @@ section[role="main"] hr {
   margin-bottom: 40px;
 }
 
-.media, .media .media {
-  margin-top: 45px;
+.media, .media .media, .affix {
+  padding-top: 45px;
 }
 
 .media .thumbnail {
