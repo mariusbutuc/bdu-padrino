@@ -27,10 +27,15 @@ class Bdu < Padrino::Application
     render 'downloads'
   end
 
+  get '/resources/?' do
+    @title = 'Resources'
+    @books = Book.active
+    render 'resources'
+  end
+
   redirects = {
     'courses'   => 'http://bigdatauniversity.com/courses',
     'acm-icpc'  => 'http://bigdatauniversity.com',
-    'resources' => 'http://bigdatauniversity.com/web/resources.php',
     'register'  => 'http://bigdatauniversity.com/courses/auth/openid/login.php',
     'login'     => 'http://bigdatauniversity.com/courses/auth/openid/login.php',
     'faq'       => 'http://bigdatauniversity.com/web/faq.php',

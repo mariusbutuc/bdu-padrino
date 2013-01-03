@@ -1,0 +1,30 @@
+%header.jumbotron
+  .container
+    %h1= @title
+    %p.lead= 'Explore the wealth of knowledge...'
+.sub-jumbotron
+  = partial 'layouts/search'
+
+%section.container{ role: 'main' }
+  .row
+    .span9
+      %ul.media-list
+        - @books.each do |book|
+          %li.media
+            %a.outbound.thumbnail.pull-left{ href: book.url }
+              %img.media-object{ src: book.cover_url.to_s[0] ? book.cover_url : '/img/default-book.png' }
+            .media-body
+              %h3.media-heading{ id: book.slug }
+                %a.outbound{ href: book.url }
+                  = book.title
+              %p= book.description
+              %p= "<strong>Authors:</strong> #{book.authors}"
+
+
+    %aside.span3
+      %ul.nav.nav-tabs.nav-stacked.affix
+        - @books.each do |book|
+          %li{ class: book == @books.first ? 'active': '' }
+            %a{ href: "##{book.slug}" }
+              %i.icon-chevron-left
+              = book.title
