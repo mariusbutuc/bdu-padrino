@@ -7,7 +7,7 @@
 
 %section.container{ role: 'main' }
   .row
-    .span9
+    .span8
       %ul.media-list
         - @books.each do |book|
           %li.media
@@ -21,10 +21,10 @@
               %p= "<strong>Authors:</strong> #{book.authors}"
 
 
-    %aside.span3
+    %aside.span4
       %ul.nav.nav-tabs.nav-stacked.affix
         - @books.each do |book|
-          %li{ class: book == @books.first ? 'active': '' }
+          %li.span4{ class: book == @books.first ? 'active': '' }
             %a{ href: "##{book.slug}" }
               %i.icon-chevron-left
               = book.title

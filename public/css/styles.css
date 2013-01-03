@@ -200,3 +200,7 @@ section[role="main"] hr {
 .media, .media .media {
   margin-top: 45px;
 }
+
+.affix li {
+  margin-left: 0;
+}

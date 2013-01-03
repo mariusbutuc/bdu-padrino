@@ -7,7 +7,8 @@
 
 %section.container{ role: 'main' }
   .row
-    .span9
+    .span8
+      %p.lead= 'Get the software you need to successfully complete the courses'
       %ul.media-list
         - @downloads.each do |d|
           %li.media
@@ -19,10 +20,10 @@
                   = d.title
               = d.description
 
-    %aside.span3
+    %aside.span4
       %ul.nav.nav-tabs.nav-stacked.affix
         - @downloads.each do |d|
-          %li{ class: d == @downloads.first ? 'active': '' }
+          %li.span4{ class: d == @downloads.first ? 'active': '' }
             %a{ href: "##{d.slug}" }
               %i.icon-chevron-left
               = d.title
