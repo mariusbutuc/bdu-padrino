@@ -218,3 +218,20 @@ section[role="main"] hr {
   color: #FFF;
   background-color: #7B9E19;
 }
+
+.pagination {
+  text-align: center;
+}
+
+.pagination ul {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  /* For IE, the outcast */
+  zoom: 1;
+  *display: inline;
+}
+
+.pagination li {
+  float: left;
+}

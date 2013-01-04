@@ -27,3 +27,6 @@
             %a{ href: "##{book.slug}" }
               %i.icon-chevron-left
               = book.title
+
+        = will_paginate @books, renderer: BootstrapPagination::Sinatra
+

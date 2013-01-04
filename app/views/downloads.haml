@@ -26,3 +26,5 @@
             %a{ href: "##{d.slug}" }
               %i.icon-chevron-left
               = d.title
+
+        = will_paginate @downloads, renderer: BootstrapPagination::Sinatra

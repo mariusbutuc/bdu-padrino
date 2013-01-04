@@ -19,6 +19,8 @@ gem 'activerecord',     :require => "active_record"
 gem 'pg'
 gem 'ruby-progressbar'
 gem 'httparty'
+gem 'will_paginate',    '~> 3.0'
+gem 'will_paginate-bootstrap'
 
 # Test requirements
 group :test do

@@ -1,4 +1,5 @@
 class Bdu < Padrino::Application
+  register WillPaginate::Sinatra
   register Padrino::Contrib::ExceptionNotifier
   register ScssInitializer
   use ActiveRecord::ConnectionAdapters::ConnectionManagement
@@ -23,13 +24,13 @@ class Bdu < Padrino::Application
 
   get '/downloads/?' do
     @title = 'Downloads'
-    @downloads = Download.active
+    @downloads = Download.active.paginate( page: params[:page], per_page: 4)
     render 'downloads'
   end
 
   get '/resources/?' do
     @title = 'Resources'
-    @books = Book.active
+    @books = Book.active.paginate( page: params[:page], per_page: 4)
     render 'resources'
   end
 

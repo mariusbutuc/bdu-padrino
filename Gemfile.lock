@@ -102,6 +102,9 @@ GEM
     tzinfo (0.3.35)
     url_mount (0.2.1)
       rack
+    will_paginate (3.0.3)
+    will_paginate-bootstrap (0.2.2)
+      will_paginate (>= 3.0.3)
 
 PLATFORMS
   ruby
@@ -123,3 +126,5 @@ DEPENDENCIES
   sass
   sinatra-flash
   thin
+  will_paginate (~> 3.0)
+  will_paginate-bootstrap

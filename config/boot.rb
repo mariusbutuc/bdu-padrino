@@ -34,12 +34,16 @@ Bundler.require(:default, PADRINO_ENV)
 # Add your before (RE)load hooks here
 #
 Padrino.before_load do
+  I18n.default_locale = :en
 end
 
 ##
 # Add your after (RE)load hooks here
 #
 Padrino.after_load do
+  require 'will_paginate'
+  require 'will_paginate/active_record'
+  include WillPaginate::Sinatra::Helpers
 end
 require 'padrino-contrib/exception_notifier'
 
