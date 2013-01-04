@@ -19,6 +19,8 @@
                   = d.title
               = d.description
 
+      = will_paginate @downloads, renderer: BootstrapPagination::Sinatra
+
     %aside.span4
       %ul.nav.nav-tabs.nav-stacked.affix
         - @downloads.each do |d|

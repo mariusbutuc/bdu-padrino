@@ -20,6 +20,8 @@
               %p= book.description
               %p= "<strong>Authors:</strong> #{book.authors}"
 
+      = will_paginate @books, renderer: BootstrapPagination::Sinatra
+
     %aside.span4
       %ul.nav.nav-tabs.nav-stacked.affix
         - @books.each do |book|

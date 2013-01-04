@@ -24,13 +24,13 @@ class Bdu < Padrino::Application
 
   get '/downloads/?' do
     @title = 'Downloads'
-    @downloads = Download.active.paginate( page: params[:page], per_page: 4)
+    @downloads = Download.active.paginate( page: params[:page], per_page: 5)
     render 'downloads'
   end
 
   get '/resources/?' do
     @title = 'Resources'
-    @books = Book.active.paginate( page: params[:page], per_page: 4)
+    @books = Book.active.paginate( page: params[:page], per_page: 5)
     render 'resources'
   end
 
