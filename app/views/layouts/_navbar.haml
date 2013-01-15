@@ -8,10 +8,11 @@
       %a.brand{ href: '/' }
         %img{ src: '/img/logo-bdu.png', alt: 'Big Data University' }
       %ul.nav.pull-right
-        - auth = %w[ login register ]
-        - auth.each do |tab|
-          %li{ class: tab == auth.last ? 'omega' : '' }
-            %a{ href: "/#{tab}" }= tab.capitalize
+        %li
+          %a.btn.btn-info{ href: "/login", style: 'color:#FFF; margin-right:10px;' } Login
+        %li
+          %a.btn.btn-warning{ href: "/register", style: 'color:#FFF;' } Register
+
       .nav-collapse
         %ul.nav
           - %w[ courses acm-icpc resources downloads ].each do |tab|
