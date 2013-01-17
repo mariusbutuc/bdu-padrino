@@ -260,7 +260,7 @@ section[role="main"] hr {
   color: #FFF;
 }
 
-a.btn {
+.lead .btn {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
