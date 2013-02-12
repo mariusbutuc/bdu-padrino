@@ -9,6 +9,8 @@ gem 'sinatra-flash',    :require => 'sinatra/flash'
 
 # Padrino Stable Gem
 gem 'padrino',          '0.10.7'
+gem 'padrino-rpm'
+gem 'newrelic_rpm'
 
 # Component requirements
 gem 'bcrypt-ruby',      :require => "bcrypt"

@@ -38,6 +38,7 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.5.0)
     multi_xml (0.5.1)
+    newrelic_rpm (3.3.5)
     padrino (0.10.7)
       padrino-admin (= 0.10.7)
       padrino-cache (= 0.10.7)
@@ -66,6 +67,8 @@ GEM
     padrino-mailer (0.10.7)
       mail (~> 2.3.0)
       padrino-core (= 0.10.7)
+    padrino-rpm (0.6.1)
+      newrelic_rpm (~> 3.3.3)
     pg (0.14.1)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -116,8 +119,10 @@ DEPENDENCIES
   haml
   httparty
   mocha
+  newrelic_rpm
   padrino (= 0.10.7)
   padrino-contrib
+  padrino-rpm
   pg
   rack-test
   rake
